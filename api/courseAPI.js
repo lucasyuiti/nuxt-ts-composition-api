@@ -1,3 +1,5 @@
+import {jsPDF} from "jspdf"
+
 const express = require('express');
 const { GraphQLClient } = require('graphql-request');
 
@@ -32,8 +34,8 @@ app.get('/getCourses', async (req, res) => {
 app.get('/htmlPdf', async(req, res) =>{
   let pdf = new jsPDF();
 
-  //var html = document.createElement("html");
-  //html.innerHTML = stringHtml;
+  var html = document.createElement("html");
+  html.innerHTML = req;
   pdf.html('', {
     callback: function (pdf) {
       pdf.save("Teste" + ".pdf");
