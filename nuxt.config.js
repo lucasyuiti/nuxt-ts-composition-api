@@ -15,7 +15,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     serverMiddleware: [
-      {path: '/getCourses' ,handler:'~/api/courseAPI.js'},
+      {path: '/urlPdf' ,handler:'~/api/courseAPI.js'},
       {path: '/htmlPdf', handler:'~/api/courseAPI.js'}
   ]
   },

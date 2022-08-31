@@ -10,26 +10,18 @@ const client = new GraphQLClient(
     process.env.ENDPOINT
 );
 
-app.get('/getCourses', async (req, res) => {
-    const allCourses = `
-    {
-        courses {
-          id
-          name
-          description
-          url
-          vote
-          authors {
-            name
-          }
-        }
-    }
-  `;
+app.get('/urlPdf', async(req, res) =>{
+  let pdf = new jsPDF();
 
-  const { courses } = await client.request(allCourses);
-
-  res.json({ courses })
-});
+  var html = document.createElement("html");
+  html.innerHTML = req;
+  pdf.html('', {
+    callback: function (pdf) {
+      pdf.save("Teste" + ".pdf");
+    },
+  });
+  res = pdf;
+})
 
 app.get('/htmlPdf', async(req, res) =>{
   let pdf = new jsPDF();
